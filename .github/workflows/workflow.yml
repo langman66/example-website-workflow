@@ -2,6 +2,10 @@ name: deploy-toy-website
 
 on: [workflow_dispatch]
 
+permissions:
+    contents: read
+    id-token: write
+    
 jobs:
   say-hello:
     runs-on: ubuntu-latest
