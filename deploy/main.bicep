@@ -12,16 +12,16 @@ param environmentType string
 @maxLength(13)
 param resourceNameSuffix string = uniqueString(resourceGroup().id)
 
-var appServiceAppName = 'cdl-example-website-${resourceNameSuffix}'
+var appServiceAppName = 'cdl-example-website'
 var appServicePlanName = 'cdl-example-plan'
-var toyManualsStorageAccountName = 'cdlweb${resourceNameSuffix}'
+var toyManualsStorageAccountName = 'cdlwebsa'
 
 // Define the SKUs for each component based on the environment type.
 var environmentConfigurationMap = {
   nonprod: {
     appServicePlan: {
       sku: {
-        name: 'F1'
+        name: 'S1'
         capacity: 1
       }
     }
@@ -71,7 +71,7 @@ resource appServiceApp 'Microsoft.Web/sites@2023-12-01' = {
   }
 }
 
-resource toyManualsStorageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
+resource toyManualsStorageAccount 'Microsoft.Storage/storageAccounts@2025-01-01' = {
   name: toyManualsStorageAccountName
   location: location
   kind: 'StorageV2'
